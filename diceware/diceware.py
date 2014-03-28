@@ -18,13 +18,13 @@ def import_wordlist(filepath, indexLength):
     """Takes a path and returns a dictionary of words."""
     import re
 
-    file = open(filepath, "r")
+    wordfile = open(filepath, "r")
 
     wordlist = {}
     # This is the regex that works for the std.edu wordlist. It may need to be changed to accommodate others.
     word_re = re.compile("^([1-6]{"+str(indexLength)+"})\s([A-Za-z0-9!'\"#\$%&\(\)\*\+\-:;=\?@\.]+)$")
 
-    for line in file.readlines():
+    for line in wordfile.readlines():
         match = word_re.match(line)
         if match:
             wordlist[match.groups()[0]] = match.groups()[1]
